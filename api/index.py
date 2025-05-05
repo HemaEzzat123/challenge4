@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 import hashlib
 import os
@@ -7,13 +7,7 @@ app = FastAPI()
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    file_path = "/tmp/flag.txt"
-
-    if not os.path.exists(file_path):
-        return Response("FLAG NOT FOUND", status_code=404)
-
-    with open(file_path, "r") as f:
-        flag = f.read()
+    flag = os.getenv("FLAG", "FLAG NOT FOUND")
 
     cookies = request.cookies
     uid = cookies.get("UID")
