@@ -21,7 +21,7 @@ async def read_root(request: Request):
         if uid == hashlib.md5("0".encode()).hexdigest():
             headers["set-cookie"] = f"FLAG={flag}; Path=/"
         else:
-            headers["set-cookie"] = "FLAG=encryptCTF{y0u_c4nt_U53_m3}; Path=/"
+            headers["set-cookie"] = "FLAG=AzCTF{y0u_c4nt_U53_m3}; Path=/"
 
     html = """
     <html lang="en">
